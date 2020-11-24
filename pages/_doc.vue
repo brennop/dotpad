@@ -24,6 +24,7 @@ import {
   History,
   TrailingNode,
 } from 'tiptap-extensions'
+import Realtime from '@/utils/realtime'
 
 export default {
   components: {
@@ -54,10 +55,16 @@ export default {
             node: 'paragraph',
             notAfter: ['paragraph'],
           }),
+          new Realtime({ document: this.$route.params.doc }),
         ],
         content: '<p>Initial editor content</p>',
       }),
     }
+  },
+  computed: {
+    document() {
+      return this.$route.params.doc
+    },
   },
   beforeDestroy() {
     this.editor.destroy()
