@@ -21,7 +21,9 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.6",
@@ -37,5 +39,8 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2"
+  },
+  "resolutions": {
+    "prosemirror-model": "1.11.2"
   }
 }
