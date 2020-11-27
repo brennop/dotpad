@@ -1,5 +1,6 @@
 <template>
-  <editor-content :editor="editor" class="editor" />
+  <editor-content :editor="editor" class="editor" @click="editor.focus()">
+  </editor-content>
 </template>
 
 <script>
@@ -23,6 +24,7 @@ import {
   Underline,
   History,
   TrailingNode,
+  Placeholder,
 } from 'tiptap-extensions'
 import Realtime from '@/utils/realtime'
 
@@ -56,8 +58,16 @@ export default {
             notAfter: ['paragraph'],
           }),
           new Realtime({ document: this.$route.params.doc }),
+          new Placeholder({
+            emptyEditorClass: 'is-editor-empty',
+            emptyNodeClass: 'is-empty',
+            emptyNodeText: 'Write your document here...',
+            showOnlyWhenEditable: true,
+            showOnlyCurrent: true,
+          }),
         ],
-        content: '<p>Initial editor content</p>',
+        content: '',
+        autoFocus: true,
       }),
     }
   },
@@ -72,10 +82,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .editor {
   max-width: 720px;
   margin: auto;
   padding: 96px 16px;
+}
+
+.ProseMirror {
+  min-height: 200px;
 }
 </style>
