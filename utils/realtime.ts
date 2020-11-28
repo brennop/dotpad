@@ -31,7 +31,6 @@ export default class Realtime extends Extension {
   get plugins() {
     return [
       ySyncPlugin(this.ytype),
-      yCursorPlugin(this.provider.awareness),
       yUndoPlugin(),
       keymap({
         'Mod-z': undo,
