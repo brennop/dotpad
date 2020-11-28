@@ -1,12 +1,10 @@
 <template>
-  <div class="wrapper">
-    <span
-      class="loading dots"
-      aria-hidden="true"
-      role="progressbar"
-      aria-label="Loading..."
-    ></span>
-  </div>
+  <span
+    class="loading dots"
+    aria-hidden="true"
+    role="progressbar"
+    aria-label="Loading..."
+  ></span>
 </template>
 
 <script>
@@ -17,9 +15,9 @@ export default Vue.extend({})
 </script>
 
 <style scoped>
-.wrapper {
-  height: 100vh;
-  display: grid;
-  place-items: center;
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 </style>
