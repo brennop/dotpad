@@ -1,11 +1,20 @@
 <template>
   <div class="container">
     <h1 class="title">dotpad</h1>
-    <form @submit.prevent="redirect">
-      <span>www.dotpad.ml/</span>
-      <input v-model="path" name="path" />
+    <form @submit.prevent="redirect" class="path">
+      <label>
+        <span>www.dotpad.ml/</span>
+        <input v-model="path" name="path" />
+      </label>
       <button>Go</button>
     </form>
+
+    <h2 v-if="visited.length > 0" class="recent">Recent files</h2>
+    <ul class="visited-list">
+      <li v-for="item in visited" :key="item">
+        <router-link :to="item">{{ item }}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -17,6 +26,12 @@ export default Vue.extend({
     return {
       path: '',
     }
+  },
+  computed: {
+    visited() {
+      const visitedString = localStorage.getItem('visited') || '[]'
+      return JSON.parse(visitedString)
+    },
   },
   methods: {
     redirect() {
@@ -38,5 +53,17 @@ export default Vue.extend({
   display: block;
   font-size: 36px;
   margin: 24px;
+}
+
+.path {
+  margin-bottom: 32px;
+}
+
+.recent {
+  margin: 8px 0;
+}
+
+.visited-list {
+  width: 300px;
 }
 </style>

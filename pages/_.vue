@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { WebsocketProvider } from 'y-websocket'
 import * as Y from 'yjs'
 import title from 'title'
@@ -14,9 +15,9 @@ import Editor from '~/components/Editor.vue'
 import Header from '~/components/Header.vue'
 import Loading from '~/components/Loading.vue'
 
-const serverUrl = process.env.NUXT_ENV_WEBSOCKET_SERVER
+const serverUrl = process.env.NUXT_ENV_WEBSOCKET_SERVER || ''
 
-export default {
+export default Vue.extend({
   components: { Editor, Loading, Header },
   data() {
     const document = this.$route.params.pathMatch
@@ -30,8 +31,11 @@ export default {
     }
   },
   computed: {
+    path() {
+      return this.$route.params.pathMatch
+    },
     documentName() {
-      const [name] = this.$route.params.pathMatch.split('/').slice(-1)
+      const [name] = this.path.split('/').slice(-1)
       return title(name)
     },
   },
@@ -41,11 +45,18 @@ export default {
         this.loading = false
       }
     })
+
+    const visitedString = localStorage.getItem('visited') || '[]'
+    const visited = JSON.parse(visitedString)
+    localStorage.setItem(
+      'visited',
+      JSON.stringify([...new Set([this.path, ...visited])])
+    )
   },
   head() {
     return {
       title: `${this.documentName}  - dotpad`,
     }
   },
-}
+})
 </script>
