@@ -7,24 +7,21 @@ import {
   ySyncPlugin,
   yUndoPlugin,
 } from 'y-prosemirror'
-import { WebsocketProvider } from 'y-websocket'
 import * as Y from 'yjs'
+import { Awareness } from 'y-protocols/awareness'
 
+type Provider = {
+  awareness: Awareness
+}
 export default class Realtime extends Extension {
-  provider: WebsocketProvider
+  provider: Provider
   ytype: Y.XmlFragment
 
-  constructor(options: { document?: string } = {}) {
+  constructor(options: { ydoc: Y.Doc; provider: Provider }) {
     super(options)
 
-    const serverUrl = process.env.NUXT_ENV_WEBSOCKET_SERVER
-
-    if (!serverUrl) throw new Error('No server URL.')
-    if (!options.document) throw new Error('No document name.')
-
-    const ydoc = new Y.Doc()
-    this.provider = new WebsocketProvider(serverUrl, options.document, ydoc)
-    this.ytype = ydoc.getXmlFragment('prosemirror')
+    this.ytype = options.ydoc.getXmlFragment('prosemirror')
+    this.provider = options.provider
   }
 
   get name() {

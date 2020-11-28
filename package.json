@@ -23,6 +23,7 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6",
     "prosemirror-keymap": "^1.1.4",
+    "text-spinners": "^1.0.5",
     "tiptap": "^1.30.0",
     "tiptap-extensions": "^1.33.2",
     "y-prosemirror": "^1.0.0",
@@ -43,7 +44,8 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "y-protocols": "^1.0.1"
   },
   "resolutions": {
     "prosemirror-model": "1.11.2"

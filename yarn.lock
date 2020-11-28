@@ -8922,6 +8922,11 @@ terser@^4.1.2, terser@^4.3.9, terser@^4.6.12, terser@^4.6.3:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
+text-spinners@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/text-spinners/-/text-spinners-1.0.5.tgz#801825e0643c53ff3ab3d990e1e93ddef97cb805"
+  integrity sha1-gBgl4GQ8U/86s9mQ4ek93vl8uAU=
+
 text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
@@ -9772,7 +9777,7 @@ y-prosemirror@^1.0.0:
   dependencies:
     lib0 "^0.2.34"
 
-y-protocols@^1.0.0:
+y-protocols@^1.0.0, y-protocols@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/y-protocols/-/y-protocols-1.0.1.tgz#7855c900039a02b369590b8ae78bc6e1cbc13c9f"
   integrity sha512-QP3fCM7c2gGfUi2nqf8gspyO4VW23zv3kNqPNdD3wNxMbuNQenMyoDVZYEo12jzR4RQ3aaDfPK62Sf31SVOmfg==

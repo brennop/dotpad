@@ -1,104 +1,37 @@
 <template>
-  <editor-content :editor="editor" class="editor" @click="editor.focus()">
-  </editor-content>
+  <loading v-if="loading" />
+  <editor v-else :ydoc="doc" :provider="provider" />
 </template>
 
 <script>
-import { Editor, EditorContent } from 'tiptap'
-import {
-  Blockquote,
-  CodeBlock,
-  HardBreak,
-  Heading,
-  OrderedList,
-  BulletList,
-  ListItem,
-  TodoItem,
-  TodoList,
-  Bold,
-  Code,
-  Image,
-  Italic,
-  Link,
-  Strike,
-  Underline,
-  History,
-  TrailingNode,
-  Placeholder,
-} from 'tiptap-extensions'
-import Realtime from '@/utils/realtime'
+import { WebsocketProvider } from 'y-websocket'
+import * as Y from 'yjs'
+import Editor from '~/components/Editor.vue'
+import Loading from '~/components/Loading.vue'
+
+const serverUrl = process.env.NUXT_ENV_WEBSOCKET_SERVER
 
 export default {
-  components: {
-    EditorContent,
-  },
+  components: { Editor, Loading },
   data() {
+    const document = this.$route.params.doc
+    const doc = new Y.Doc()
+    const provider = new WebsocketProvider(serverUrl, document, doc)
+
     return {
-      editor: new Editor({
-        extensions: [
-          new Blockquote(),
-          new CodeBlock(),
-          new HardBreak(),
-          new Heading({ levels: [1, 2, 3] }),
-          new BulletList(),
-          new OrderedList(),
-          new ListItem(),
-          new TodoItem(),
-          new TodoList(),
-          new Bold(),
-          new Code(),
-          new Italic(),
-          new Link(),
-          new Strike(),
-          new Underline(),
-          new History(),
-          new Image(),
-          new TrailingNode({
-            node: 'paragraph',
-            notAfter: ['paragraph'],
-          }),
-          new Realtime({ document: this.$route.params.doc }),
-          new Placeholder({
-            emptyEditorClass: 'is-editor-empty',
-            emptyNodeClass: 'is-empty',
-            emptyNodeText: 'Write your document here...',
-            showOnlyWhenEditable: true,
-            showOnlyCurrent: true,
-          }),
-        ],
-        content: '',
-        autoFocus: true,
-      }),
+      doc,
+      provider,
+      loading: true,
     }
   },
-  computed: {
-    document() {
-      return this.$route.params.doc
-    },
-  },
-  beforeDestroy() {
-    this.editor.destroy()
+  mounted() {
+    this.provider.on('status', (event) => {
+      if (event.status === 'connected') {
+        this.loading = false
+      }
+    })
   },
 }
 </script>
 
-<style>
-.editor {
-  max-width: 720px;
-  margin: auto;
-  padding: 96px 16px;
-}
-
-.ProseMirror {
-  min-height: 200px;
-}
-
-.editor p.is-editor-empty:first-child::before {
-  content: attr(data-empty-text);
-  float: left;
-  color: #aaa;
-  pointer-events: none;
-  height: 0;
-  font-style: italic;
-}
-</style>
+<style></style>
