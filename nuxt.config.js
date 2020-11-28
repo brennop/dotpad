@@ -17,6 +17,13 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'data:;base64,iVBORw0KGgo=' },
     ],
+    script: [
+      {
+        'data-goatcounter': 'https://dotpad.goatcounter.com/count',
+        async: true,
+        src: '//gc.zgo.at/count.js',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
