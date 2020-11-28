@@ -14,9 +14,7 @@ export default {
         content: 'Collaborative rich text editing',
       },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'data:;base64,iVBORw0KGgo=' },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       {
         'data-goatcounter': 'https://dotpad.goatcounter.com/count',
