@@ -1,12 +1,6 @@
 import { keymap } from 'prosemirror-keymap'
 import { Extension } from 'tiptap'
-import {
-  redo,
-  undo,
-  yCursorPlugin,
-  ySyncPlugin,
-  yUndoPlugin,
-} from 'y-prosemirror'
+import { redo, undo, ySyncPlugin, yUndoPlugin } from 'y-prosemirror'
 import * as Y from 'yjs'
 import { Awareness } from 'y-protocols/awareness'
 
