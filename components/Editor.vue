@@ -172,7 +172,7 @@ li[data-type='todo_item'] {
 }
 
 .todo-checkbox {
-  border: 2px solid #444;
+  border: 2px solid var(--color);
   height: 0.9em;
   width: 0.9em;
   box-sizing: border-box;
@@ -203,7 +203,7 @@ li[data-done='true'] {
     }
   }
   > .todo-checkbox {
-    background-color: #444;
+    background-color: var(--color);
   }
 }
 li[data-done='false'] {
