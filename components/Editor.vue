@@ -108,4 +108,56 @@ export default {
   height: 0;
   font-style: italic;
 }
+
+.editor blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.editor blockquote > :first-child {
+  margin-top: 0;
+}
+
+.editor blockquote > :last-child {
+  margin-bottom: 0;
+}
+.editor p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.editor ol,
+.editor ul {
+  padding-left: 2em;
+}
+
+.editor li {
+  word-wrap: break-all;
+}
+
+.editor img {
+  max-width: 100%;
+  border-radius: 4px;
+  display: block;
+  margin: 18px auto;
+  transition: 0.1s ease-out;
+}
+
+img.ProseMirror-selectednode {
+  box-shadow: 0px 0px 0px 3px #46c4f7;
+  filter: brightness(0.95);
+}
+
+.editor h1,
+.editor h2,
+.editor h3,
+.editor h4,
+.editor h5,
+.editor h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
 </style>
