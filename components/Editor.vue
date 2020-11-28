@@ -96,6 +96,11 @@ export default {
   max-width: 720px;
   margin: auto;
   padding: 96px 16px;
+
+  &:focus,
+  & > :focus-within {
+    outline: none;
+  }
 }
 
 .ProseMirror {
