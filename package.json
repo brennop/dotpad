@@ -21,8 +21,11 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
+    "fibers": "^5.0.0",
     "nuxt": "^2.14.6",
     "prosemirror-keymap": "^1.1.4",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
     "text-spinners": "^1.0.5",
     "tiptap": "^1.30.0",
     "tiptap-extensions": "^1.33.2",
