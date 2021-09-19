@@ -168,9 +168,31 @@ img.ProseMirror-selectednode {
   line-height: 1.25;
 }
 
+.editor pre {
+  background: #8882;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  font-family: 'SFMono-Regular', Menlo, Consolas, 'PT Mono', 'Liberation Mono',
+    Courier, monospace;
+}
+
+.editor :not(pre) > code {
+  color: #eb5757;
+  background: #8882;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  font-weight: bold;
+  font-family: 'SFMono-Regular', Menlo, Consolas, 'PT Mono', 'Liberation Mono',
+    Courier, monospace;
+  border-radius: 3px;
+}
+
 ul[data-type='todo_list'] {
   padding-left: 0;
 }
+
 li[data-type='todo_item'] {
   display: flex;
   flex-direction: row;
