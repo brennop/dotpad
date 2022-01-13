@@ -3,7 +3,7 @@
     <h1 class="title">dotpad</h1>
     <form @submit.prevent="redirect" class="path">
       <label>
-        <span>www.dotpad.vercel.app/</span>
+        <span>dotpad.vercel.app/</span>
         <input v-model="path" name="path" />
       </label>
       <button>Go</button>
