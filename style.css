@@ -1,0 +1,19 @@
+#app {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.editor {
+  max-width: 720px;
+  margin: auto;
+  padding: 96px 16px;
+}
+
+.editor > :focus-within {
+  outline: none;
+}
+
+.ProseMirror {
+  min-height: 200px;
+}
