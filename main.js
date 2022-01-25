@@ -6,28 +6,20 @@ import Collaboration from '@tiptap/extension-collaboration'
 
 import * as Y from "yjs";
 import { WebsocketProvider } from "y-websocket";
+import { IndexeddbPersistence } from "y-indexeddb";
 
 const server = 'wss://dotpad.fly.dev';
 
 const name = location.pathname.slice(1);
 
 const doc = new Y.Doc();
-const provider = new WebsocketProvider('ws://localhost:1234', name, doc)
+new WebsocketProvider('ws://localhost:1234', name, doc)
+const provider = new IndexeddbPersistence(name, doc)
 
-provider.on('status', (event) => {
-  if (event.status === 'connected') {
-    mount();
-  }
-})
+provider.on('synced', mount);
 
 function mount() {
-  const app = document.querySelector('#app');
-  document.querySelector('.spinner').remove();
-
-  const element = document.createElement('div');
-  element.classList.add('editor');
-  app.appendChild(element);
-
+  const isEmpty = doc.getXmlFragment('default').length == 0;
   new Editor({
     element: document.querySelector('.editor'),
     extensions: [
@@ -40,6 +32,6 @@ function mount() {
       })
     ],
     content: '',
-    autofocus: true,
+    autofocus: isEmpty,
   })
 }
