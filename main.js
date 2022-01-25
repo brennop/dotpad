@@ -9,7 +9,7 @@ import { WebsocketProvider } from "y-websocket";
 import { IndexeddbPersistence } from "y-indexeddb";
 
 const INIT_CONN_TIMEOUT = 5000;
-const server = "wss://dotpad.fly.dev";
+const server = 'wss://dotpad.fly.dev';
 
 const name = location.pathname.slice(1);
 
@@ -48,6 +48,13 @@ provider.on("synced", async () => {
 });
 
 function mount(isEmpty) {
+  const app = document.querySelector('#app');
+  document.querySelector('.spinner').remove();
+
+  const element = document.createElement('div');
+  element.classList.add('editor');
+  app.appendChild(element);
+
   new Editor({
     element: document.querySelector(".editor"),
     extensions: [
