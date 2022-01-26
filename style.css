@@ -21,8 +21,10 @@ body {
   body   { 
     background: #1a1a1a;
     color: #e6e6e6; 
+  }
 }
 
+/** loading icon */
 .spinner {
   display: flex;
   align-items: center;
@@ -50,6 +52,27 @@ body {
     transform: rotate(360deg);
   }
 }
+/** end loading icon */
+
+nav {
+  opacity: 0;
+  padding: .5em;
+  text-align: center;
+  transition: opacity 0.1s ease-in; 
+}
+
+nav:hover {
+  opacity: 0.5;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: inherit;
+}
 
 .editor {
   max-width: 72ch;
@@ -67,7 +90,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+nav {
   font-family: PT Serif, serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue, Arial,
     sans-serif;
