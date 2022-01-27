@@ -17,11 +17,44 @@ body {
   transition: color 0.15s ease-out, background 0.15s ease-out;
 }
 
+a {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 @media (prefers-color-scheme: dark) {
   body   { 
     background: #1a1a1a;
     color: #e6e6e6; 
   }
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 200px;
+}
+
+.home ul {
+  width: 512px;
+}
+
+.home a {
+  display: flex;
+  padding: 0.2em;
+  border-radius: 0.2em;
+}
+
+.home a:hover {
+  background: #e6e6e620;
 }
 
 /** loading icon */
@@ -86,6 +119,10 @@ nav a:visited {
 
 .ProseMirror {
   min-height: 200px;
+}
+
+li p {
+  margin: 0;
 }
 
 h1,
