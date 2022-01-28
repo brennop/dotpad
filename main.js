@@ -95,6 +95,7 @@ if (name === "") {
         }),
         Collaboration.configure({
           document: doc,
+          field: 'prosemirror'
         }),
       ],
       content: "",
