@@ -1,8 +1,13 @@
-import "./style.css";
+import "./style.scss";
 
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import Collaboration from "@tiptap/extension-collaboration";
+import Image from "@tiptap/extension-image";
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import { lowlight } from 'lowlight';
 
 import * as Y from "yjs";
 import { WebsocketProvider } from "y-websocket";
@@ -42,10 +47,10 @@ if (name === "") {
     </div>
   `;
 
-  const form = document.querySelector('form');
-  form.addEventListener('submit', (event) => {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const path = document.querySelector('input').value;
+    const path = document.querySelector("input").value;
     location.assign(path);
   });
 } else {
@@ -77,7 +82,7 @@ if (name === "") {
   async function init() {
     await notifyConnection();
 
-    const isEmpty = doc.getXmlFragment('default').length === 0;
+    const isEmpty = doc.getXmlFragment("default").length === 0;
 
     app.innerHTML = `
       <nav>
@@ -91,11 +96,20 @@ if (name === "") {
       extensions: [
         StarterKit.configure({
           history: false, // Collaboration comes with its own history extension
+          codeBlock: false,
           document,
         }),
         Collaboration.configure({
           document: doc,
-          field: 'prosemirror'
+          field: "prosemirror",
+        }),
+        Image,
+        TaskList,
+        TaskItem.configure({
+          nested: true,
+        }),
+        CodeBlockLowlight.configure({
+          lowlight
         }),
       ],
       content: "",
