@@ -6,8 +6,8 @@ import Collaboration from "@tiptap/extension-collaboration";
 import Image from "@tiptap/extension-image";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
-import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
-import { lowlight } from 'lowlight';
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { lowlight } from "lowlight";
 
 import * as Y from "yjs";
 import { WebsocketProvider } from "y-websocket";
@@ -33,16 +33,16 @@ if (name === "") {
       <h3>recent files</h3>
       <ul class="visited-list">
         ${visitedList
-      .map(
-        (link) => `
+          .map(
+            (link) => `
           <li>
             <a href="/${link}">
               <p>${link}</p>
             </a>
           </li>
         `
-      )
-      .join("")}
+          )
+          .join("")}
       </ul>
     </div>
   `;
@@ -54,6 +54,8 @@ if (name === "") {
     location.assign(path);
   });
 } else {
+  document.title = `${name} - dotpad`;
+
   app.innerHTML = `
   <div class="spinner">
     <span class="loader"></span>
@@ -109,7 +111,7 @@ if (name === "") {
           nested: true,
         }),
         CodeBlockLowlight.configure({
-          lowlight
+          lowlight,
         }),
       ],
       content: "",
