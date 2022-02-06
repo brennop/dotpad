@@ -83,9 +83,9 @@ nav {
   opacity: 0;
   padding: 0.5em;
   text-align: center;
-  transition: opacity 0.1s ease-in;
+  transition: opacity 0.2s ease-in;
 
-  :hover {
+  &:hover {
     opacity: 0.5;
   }
 

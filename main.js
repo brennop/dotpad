@@ -14,7 +14,7 @@ import { WebsocketProvider } from "y-websocket";
 import { IndexeddbPersistence } from "y-indexeddb";
 
 const INIT_CONN_TIMEOUT = 3000;
-const server = "wss://dotpad.fly.dev";
+const server = import.meta.env.VITE_DOTPAD_SERVER;
 
 const app = document.querySelector("#app");
 const name = location.pathname.slice(1);
@@ -61,7 +61,7 @@ if (name === "") {
     `;
 
   const doc = new Y.Doc();
-  const provider = new WebsocketProvider("ws://localhost:1234", name, doc);
+  const provider = new WebsocketProvider(server, name, doc);
   const _persistence = new IndexeddbPersistence(name, doc);
 
   async function notifyConnection() {
