@@ -19,10 +19,10 @@ const server = import.meta.env.VITE_DOTPAD_SERVER;
 const app = document.querySelector("#app");
 const name = location.pathname.slice(1);
 
-if (name === "") {
-  const visited = localStorage.getItem("visited");
-  const visitedList = visited ? JSON.parse(visited) : [];
+const visited = localStorage.getItem("visited");
+const visitedList = visited ? JSON.parse(visited) : [];
 
+if (name === "") {
   app.innerHTML = `
     <div class="home">
       <h1>dotpad</h1>
@@ -55,6 +55,7 @@ if (name === "") {
   });
 } else {
   document.title = `${name} - dotpad`;
+  localStorage.setItem("visited", JSON.stringify([name, ...visitedList]));
 
   app.innerHTML = `
   <div class="spinner">
