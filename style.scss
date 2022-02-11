@@ -33,7 +33,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 200px;
-  height: 100vh;
+  min-height: 100vh;
 
   ul {
     width: 512px;

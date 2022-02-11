@@ -67,7 +67,9 @@ if (name === "") {
   });
 } else {
   document.title = `${name} - dotpad`;
-  localStorage.setItem("visited", JSON.stringify([name, ...visitedList]));
+  if (!visitedList.includes(name)) {
+    localStorage.setItem("visited", JSON.stringify([name, ...visitedList].slice(10)));
+  }
 
   app.innerHTML = `
   <div class="spinner">
