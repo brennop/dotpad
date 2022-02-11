@@ -33,6 +33,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 200px;
+  min-height: 100vh;
 
   ul {
     width: 512px;
@@ -46,6 +47,13 @@ body {
 
   a:hover {
     background: #e6e6e620;
+  }
+
+  .footer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }
 
