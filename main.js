@@ -26,6 +26,7 @@ if (name === "") {
   app.innerHTML = `
     <div class="home">
       <h1>dotpad</h1>
+      <p>a dontpad.com clone</p>
       <form>
         <input></input>
         <button>go</button>
@@ -33,17 +34,28 @@ if (name === "") {
       <h3>recent files</h3>
       <ul class="visited-list">
         ${visitedList
-          .map(
-            (link) => `
+      .map(
+        (link) => `
           <li>
             <a href="/${link}">
               <p>${link}</p>
             </a>
           </li>
         `
-          )
-          .join("")}
+      )
+      .join("")}
       </ul>
+
+      <div class="footer">
+        <a
+          href="https://github.com/brennop/dotpad"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          github
+        </a>
+      </div>
+
     </div>
   `;
 
