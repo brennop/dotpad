@@ -7,6 +7,7 @@ import Image from "@tiptap/extension-image";
 import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import Link from "@tiptap/extension-link";
 import { lowlight } from "lowlight/lib/common";
 
 import * as Y from "yjs";
@@ -34,16 +35,16 @@ if (name === "") {
       <h3>recent files</h3>
       <ul class="visited-list">
         ${visitedList
-      .map(
-        (link) => `
+          .map(
+            (link) => `
           <li>
             <a href="/${link}">
               <p>${link}</p>
             </a>
           </li>
         `
-      )
-      .join("")}
+          )
+          .join("")}
       </ul>
 
       <div class="footer">
@@ -68,7 +69,10 @@ if (name === "") {
 } else {
   document.title = `${name} - dotpad`;
   if (!visitedList.includes(name)) {
-    localStorage.setItem("visited", JSON.stringify([name, ...visitedList].slice(10)));
+    localStorage.setItem(
+      "visited",
+      JSON.stringify([name, ...visitedList].slice(10))
+    );
   }
 
   app.innerHTML = `
@@ -128,6 +132,7 @@ if (name === "") {
         CodeBlockLowlight.configure({
           lowlight,
         }),
+        Link,
       ],
       content: "",
       autofocus: isEmpty,
