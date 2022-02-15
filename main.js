@@ -71,7 +71,7 @@ if (name === "") {
   if (!visitedList.includes(name)) {
     localStorage.setItem(
       "visited",
-      JSON.stringify([name, ...visitedList].slice(10))
+      JSON.stringify([name, ...visitedList].slice(0, 10))
     );
   }
 
