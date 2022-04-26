@@ -1,5 +1,5 @@
 <template>
-  <editor-content :editor="editor" class="editor"/>
+  <editor-content :editor="editor" class="editor" />
 </template>
 
 <script setup>
@@ -12,7 +12,6 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Link from "@tiptap/extension-link";
-import GapCursor from "@tiptap/extension-gapcursor";
 
 import { lowlight } from "lowlight/lib/common";
 
@@ -61,11 +60,6 @@ const editor = useEditor({
 </script>
 
 <style lang="scss">
-body {
-  background: #fcf9f4;
-  color: #212326;
-}
-
 .editor {
   max-width: 72ch;
   margin: auto;
@@ -213,41 +207,48 @@ body {
       background-color: #67060c;
     }
   }
-}
 
-li p {
-  margin: 0;
-}
-
-ul[data-type="taskList"] {
-  list-style: none;
-  padding: 0;
-
-  p {
+  li p {
     margin: 0;
   }
 
-  li {
-    display: flex;
+  ul[data-type="taskList"] {
+    list-style: none;
+    padding: 0;
 
-    > label {
-      flex: 0 0 auto;
-      margin-right: 0.5rem;
-      user-select: none;
+    p {
+      margin: 0;
     }
 
-    > div {
-      flex: 1 1 auto;
+    li {
+      display: flex;
+
+      >label {
+        flex: 0 0 auto;
+        margin-right: 0.5rem;
+        user-select: none;
+      }
+
+      >div {
+        flex: 1 1 auto;
+      }
     }
   }
-}
 
-li[data-checked="true"] > div > p {
-  text-decoration: line-through;
-}
+  li[data-checked="true"]>div>p {
+    text-decoration: line-through;
+  }
 
-p {
-  text-align: justify;
-  text-justify: auto;
+  p {
+    text-align: justify;
+    text-justify: auto;
+  }
+
+  a {
+    cursor: pointer;
+    &:visited {
+      color: inherit;
+    }
+  }
 }
 </style>

@@ -1,10 +1,14 @@
 <template>
   <div>
     <nav>
-      <a href="/">dotpad</a>
+      <NuxtLink to="/">dotpad</NuxtLink>
     </nav>
     <Suspense>
       <editor :provider="provider" />
+
+      <template #fallback>
+        <spinner />
+      </template>
     </Suspense>
   </div>
 </template>
@@ -17,12 +21,12 @@ import { IndexeddbPersistence } from "y-indexeddb";
 const route = useRoute()
 const name = route.params.doc;
 
-const INIT_CONN_TIMEOUT = 3000;
-const server = import.meta.env.VITE_DOTPAD_SERVER || "wss://dotpad.fly.dev";
+const server = import.meta.env.VITE_DOTPAD_SERVER;
 
 const doc = new Y.Doc();
 const provider = new WebsocketProvider(server, name, doc);
-const _persistence = new IndexeddbPersistence(name, doc);
+
+new IndexeddbPersistence(name, doc);
 </script>
 
 <style lang="scss">
