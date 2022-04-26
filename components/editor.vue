@@ -1,116 +1,77 @@
-#app {
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-    Cantarell, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<template>
+  <editor-content :editor="editor" class="editor"/>
+</template>
+
+<script setup>
+import { useEditor, EditorContent } from '@tiptap/vue-3'
+
+import StarterKit from '@tiptap/starter-kit'
+import Collaboration from "@tiptap/extension-collaboration";
+import Image from "@tiptap/extension-image";
+import TaskList from "@tiptap/extension-task-list";
+import TaskItem from "@tiptap/extension-task-item";
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import Link from "@tiptap/extension-link";
+import GapCursor from "@tiptap/extension-gapcursor";
+
+import { lowlight } from "lowlight/lib/common";
+
+const { provider } = defineProps(["provider"])
+
+async function notifyConnection() {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 3000);
+
+    const handleStatus = (event) => {
+      if (event.status == "connected") {
+        provider.off("status", handleStatus);
+        resolve();
+      }
+    };
+
+    provider.on("status", handleStatus);
+  });
 }
 
+await notifyConnection();
+
+const editor = useEditor({
+  content: "",
+  extensions: [
+    StarterKit.configure({
+      history: false, // Collaboration comes with its own history extension
+      codeBlock: false,
+      document,
+    }),
+    Collaboration.configure({
+      document: provider.doc,
+      field: "prosemirror",
+    }),
+    Image,
+    TaskList,
+    TaskItem.configure({
+      nested: true,
+    }),
+    CodeBlockLowlight.configure({
+      lowlight,
+    }),
+    Link,
+  ]
+})
+</script>
+
+<style lang="scss">
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-size: 18px;
-
-  color: #1a1a1a;
-  background: #f6f6f6;
-  transition: color 0.15s ease-out, background 0.15s ease-out;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #1a1a1a;
-    color: #e6e6e6;
-  }
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 200px;
-  min-height: 100vh;
-
-  ul {
-    width: 512px;
-  }
-
-  a {
-    display: flex;
-    padding: 0.2em;
-    border-radius: 0.2em;
-  }
-
-  a:hover {
-    background: #e6e6e620;
-  }
-
-  .footer {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-}
-
-/** loading icon */
-.spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-}
-
-.loader {
-  width: 24px;
-  height: 24px;
-  border: 3px solid #aaa;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-/** end loading icon */
-
-nav {
-  opacity: 0;
-  padding: 0.5em;
-  text-align: center;
-  transition: opacity 0.2s ease-in;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  a {
-    text-decoration: none;
-  }
-}
-
-a,
-a:visited {
-  color: inherit;
+  background: #fcf9f4;
+  color: #212326;
 }
 
 .editor {
   max-width: 72ch;
   margin: auto;
   padding: 96px 16px;
+
+  font-family: sans-serif;
 
   :focus-within {
     outline: none;
@@ -123,10 +84,11 @@ a:visited {
   img {
     height: auto;
     max-width: 100%;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
+    margin: 2px 0;
 
     &.ProseMirror-selectednode {
-      outline: 3px solid #68cef8;
+      outline: 2px solid #68cef8;
     }
   }
 
@@ -284,19 +246,8 @@ li[data-checked="true"] > div > p {
   text-decoration: line-through;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-nav {
-  font-family: PT Serif, serif, system-ui, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Droid Sans, Helvetica Neue,
-    Arial, sans-serif;
-}
-
 p {
   text-align: justify;
   text-justify: auto;
 }
+</style>
