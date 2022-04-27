@@ -276,6 +276,16 @@
   dependencies:
     mime "^3.0.0"
 
+"@fontsource/dm-mono@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/dm-mono/-/dm-mono-4.5.8.tgz#83783fcf23920f7409de9d7aa0ff5807e1c6a93c"
+  integrity sha512-BWVF+sw+xultMAp1VXXkTF4VTS8G4ZhmlX6bLz1xZtblmee/d0vfH4yWYZ5OyYeF/lUnSefZhRWW7cc2Rqjifw==
+
+"@fontsource/dm-sans@^4.5.7":
+  version "4.5.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/dm-sans/-/dm-sans-4.5.7.tgz#fcf6b866eeb2cf8b9cf8a6e7756f21e8ed3cfc7f"
+  integrity sha512-pYzU78F4HZHMpERjarfOnQZ20XL2thfDXTaZW30CoQgfqgZSSxHDfB6bVrs6jUPrgeAxK5ZuGG9hkpvZJT7SdQ==
+
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-3.0.6.tgz#4ac237f4dabc8dd93330386907b97591801f7352"

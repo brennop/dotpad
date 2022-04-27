@@ -1,7 +1,9 @@
 <template>
   <div>
     <nav>
-      <NuxtLink to="/">dotpad</NuxtLink>
+      <NuxtLink to="/">
+        <b>dotpad</b>
+      </NuxtLink>
     </nav>
     <Suspense>
       <editor :provider="provider" />

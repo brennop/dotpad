@@ -61,11 +61,11 @@ const editor = useEditor({
 
 <style lang="scss">
 .editor {
-  max-width: 72ch;
+  max-width: 64ch;
   margin: auto;
-  padding: 96px 16px;
+  padding: 64px 20px;
 
-  font-family: sans-serif;
+  font-family: "DM Sans", sans-serif;
 
   :focus-within {
     outline: none;
@@ -79,11 +79,19 @@ const editor = useEditor({
     height: auto;
     max-width: 100%;
     border-radius: 0.5rem;
-    margin: 2px 0;
+    margin: 8px 0;
 
     &.ProseMirror-selectednode {
       outline: 2px solid #68cef8;
     }
+  }
+
+  code {
+    font-family: "DM Mono", monospace;
+    font-size: 0.9rem;
+    background: #e4e4e5ed;
+    padding: 3px 6px;
+    border-radius: .375rem;
   }
 
   /** codeblocks */
@@ -91,13 +99,11 @@ const editor = useEditor({
     background: #0d0d0ded;
     border-radius: 0.5rem;
     color: #fff;
-    font-family: monospace;
     padding: 0.75rem 1rem;
 
     code {
       background: none;
       color: inherit;
-      font-size: 0.8rem;
       padding: 0;
     }
 
@@ -246,9 +252,6 @@ const editor = useEditor({
 
   a {
     cursor: pointer;
-    &:visited {
-      color: inherit;
-    }
   }
 }
 </style>
