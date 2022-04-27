@@ -1,10 +1,13 @@
 <template>
   <div>
+    <Title>{{ name }} - dotpad</Title>
+
     <nav>
       <NuxtLink to="/">
         <b>dotpad</b>
       </NuxtLink>
     </nav>
+
     <Suspense>
       <editor :provider="provider" />
 

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Title>dotpad</Title>
     <h1>dotpad</h1>
 
     <p class="subtitle">a dontpad.com clone</p>
