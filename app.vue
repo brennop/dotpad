@@ -31,7 +31,7 @@ body {
   box-sizing: border-box;
 }
 
-
+a,
 a:visited {
   color: inherit;
 }

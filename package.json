@@ -14,6 +14,7 @@
   "dependencies": {
     "@fontsource/dm-mono": "^4.5.8",
     "@fontsource/dm-sans": "^4.5.7",
+    "@tiptap/extension-character-count": "^2.0.0-beta.25",
     "@tiptap/extension-code-block-lowlight": "^2.0.0-beta.68",
     "@tiptap/extension-collaboration": "^2.0.0-beta.33",
     "@tiptap/extension-image": "^2.0.0-beta.27",

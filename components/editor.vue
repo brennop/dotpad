@@ -1,5 +1,10 @@
 <template>
-  <editor-content :editor="editor" class="editor" />
+  <div class="container">
+    <editor-content :editor="editor" class="editor" />
+    <div class="character-count" v-if="editor && enabled">
+      {{ editor.storage.characterCount.characters({ mode: "textSize" }) }}/{{ limit }} characters
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -12,10 +17,13 @@ import TaskList from "@tiptap/extension-task-list";
 import TaskItem from "@tiptap/extension-task-item";
 import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
 import Link from "@tiptap/extension-link";
+import CharacterCount from "@tiptap/extension-character-count"
 
 import { lowlight } from "lowlight/lib/common";
 
-const { provider } = defineProps(["provider"])
+const { provider } = defineProps(["provider"]);
+
+const limit = 10000;
 
 async function notifyConnection() {
   return new Promise((resolve) => {
@@ -55,21 +63,31 @@ const editor = useEditor({
       lowlight,
     }),
     Link,
+    CharacterCount.configure({
+      limit: limit,
+    })
   ]
 })
 </script>
 
 <style lang="scss">
-.editor {
+.container {
   max-width: 64ch;
   margin: auto;
   padding: 64px 20px;
+}
 
+.editor {
   font-family: "DM Sans", sans-serif;
 
   :focus-within {
     outline: none;
   }
+}
+
+.character-count {
+  opacity: 0.5;
+  text-align: right;
 }
 
 .ProseMirror {
