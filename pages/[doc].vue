@@ -32,6 +32,10 @@ const doc = new Y.Doc();
 const provider = new WebsocketProvider(server, name, doc);
 
 new IndexeddbPersistence(name, doc);
+
+// save current page on localStorage
+const recent = new Set(JSON.parse(localStorage.getItem("visited")))
+localStorage.setItem("visited", JSON.stringify([...recent.add(name).values()].slice(0, 5)))
 </script>
 
 <style lang="scss">

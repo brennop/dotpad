@@ -6,9 +6,17 @@
     <p class="subtitle">a dontpad.com clone</p>
 
     <form @submit.prevent="handleSubmit">
-      <input v-model="input"/>
+      <input v-model="input" />
       <button>go</button>
     </form>
+
+    <ul>
+      <li v-for="page in recent">
+        <a :href="page">
+          {{ page }}
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -16,6 +24,8 @@
 const router = useRouter();
 
 const input = ref("");
+
+const recent = JSON.parse(localStorage.getItem("visited"))
 
 function handleSubmit() {
   router.push(input.value)
@@ -42,5 +52,13 @@ input {
 
 button {
   padding: 4px 6px;
+}
+
+ul {
+  width: 320px;
+}
+
+li a {
+  display: block;
 }
 </style>
